@@ -18,6 +18,8 @@ export default function MainHeader() {
           className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#4B5BE6] text-white text-sm font-semibold hover:bg-[#3f4fd9] transition"
         >
           {/* Telegram-style icon */}
+
+          {/* another comment */}
           <svg
             viewBox="0 0 512 512"
             className="w-4 h-4 fill-white"
