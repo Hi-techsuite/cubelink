@@ -59,6 +59,8 @@ export default function Profile() {
     if (user?.firstName === null || user?.lastName === null)
       return user?.username;
 
+    if (user?.firstName === undefined || user?.lastName === undefined)
+      return user?.username || "##";
     return `${user?.firstName} ${user?.lastName}`;
   };
   return (
