@@ -5,7 +5,6 @@ export default function MainHeader() {
         {/* Left: Logo + Brand */}
         <div className="flex items-center gap-3">
           {/* Logo */}
-    
 
           {/* Brand name */}
           {/* <span className="text-xl font-semibold text-neutral-900">Cube</span> */}
@@ -15,12 +14,19 @@ export default function MainHeader() {
 
         {/* Right: CTA */}
         <a
-          href="#"
+          href="https://play.google.com/store/apps/details?id=ng.cube.app"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#4B5BE6] text-white text-sm font-semibold hover:bg-[#3f4fd9] transition"
         >
           {/* Telegram-style icon */}
-          <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white">
-            <path d="M9.993 15.674l-.398 5.6c.57 0 .816-.246 1.112-.54l2.67-2.55 5.53 4.045c1.014.56 1.73.266 1.984-.936L23.98 2.79c.296-1.49-.538-2.074-1.522-1.71L1.114 9.403c-1.452.56-1.43 1.36-.247 1.723l5.49 1.713L19.11 5.86c.6-.397 1.146-.177.697.22" />
+          <svg
+            viewBox="0 0 512 512"
+            className="w-4 h-4 fill-white"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M48 59.49v393a4.33 4.33 0 006.56 3.73l229.1-132.3L48 59.49z" />
+            <path d="M285.34 256L329.4 211.9 85.8 75.6l199.54 180.4z" />
+            <path d="M329.4 300.1L285.34 256 85.8 436.4l243.6-136.3z" />
+            <path d="M432.9 239.3l-83.1-48.1-46.5 46.5 46.5 46.5 83.1-48.1c10.8-6.2 10.8-21.6 0-27.8z" />
           </svg>
           Download App
         </a>

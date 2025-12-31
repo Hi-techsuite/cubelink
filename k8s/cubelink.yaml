@@ -1,0 +1,54 @@
+# k8s/egoras-org.yaml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cubelink
+  labels:
+    app: cubelink
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cubelink
+  template:
+    metadata:
+      labels:
+        app: cubelink
+    spec:
+      containers:
+        - name: cubelink
+          image: ghcr.io/dhive-protocol/egoras-org:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 20
+      # Reference the GHCR secret for pulling private images
+      imagePullSecrets:
+        - name: ghcr-secret
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cubelink-service
+spec:
+  selector:
+    app: cubelink
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 32083

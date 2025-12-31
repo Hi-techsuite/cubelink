@@ -30,9 +30,9 @@ export default function Post() {
   };
 
   return (
-    <div className="min-h-screen bg-[linear-gradient(135deg,#dff1e8,#e8f0ff,#ffffff)] px-4 flex justify-center items-start">
-      {/* Optical centering wrapper */}
-      <div className="w-full max-w-sm mt-[12vh] md:mt-[14vh]">
+    <div className="min-h-screen bg-[linear-gradient(135deg,#dff1e8,#e8f0ff,#ffffff)] px-4 flex justify-center">
+      {/* Optical vertical centering */}
+      <div className="w-full max-w-sm pt-[14vh] pb-12">
         <div className="bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.08)] p-6 flex flex-col gap-4">
           {/* Author */}
           <div className="flex items-center gap-3">
@@ -41,8 +41,8 @@ export default function Post() {
               alt="avatar"
               className="w-10 h-10 rounded-full bg-neutral-100"
             />
-            <div>
-              <p className="text-sm font-semibold text-neutral-900 leading-none">
+            <div className="leading-tight">
+              <p className="text-sm font-semibold text-neutral-900">
                 {post.author.name}
               </p>
               <p className="text-xs text-neutral-500">
