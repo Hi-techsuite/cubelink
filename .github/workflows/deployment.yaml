@@ -3,7 +3,7 @@ name: 🚀 Build, Push & Deploy gocube.org
 on:
   push:
     branches:
-      - deploy # Trigger only from this branch
+      - main # Trigger only from this branch
   workflow_dispatch:
 
 jobs:
