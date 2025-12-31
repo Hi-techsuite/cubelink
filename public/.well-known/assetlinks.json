@@ -1,0 +1,17 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "ng.cube.app",
+      "sha256_cert_fingerprints": [
+        "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C",
+        "71:31:54:41:88:4F:69:41:5F:7F:7E:DF:01:DE:13:BA:06:6B:25:9B:B9:E1:1C:5C:9C:F0:1F:FE:84:3C:C2:DC",
+        "58:E9:34:6E:A9:83:DD:88:A7:3A:1D:1C:BB:E7:2D:A5:E9:EC:5D:C5:BB:00:CF:C3:1E:C5:0B:8A:E4:24:F7:D2"
+      ]
+    }
+  }
+]
