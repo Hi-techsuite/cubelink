@@ -12,7 +12,7 @@ interface ChannelProps {
   username: string;
   createdBy: string;
   createdAt: string;
-  subscribers?: number;
+  followersCount?: number;
 }
 
 export default function Channel() {
@@ -20,6 +20,7 @@ export default function Channel() {
   const [isMobile, setIsMobile] = useState(false);
   const [channel, setChannel] = useState<ChannelProps>();
 
+  console.log(isMobile, 'isMobile');
   useEffect(() => {
     if (!channelId) return;
 
@@ -35,13 +36,13 @@ export default function Channel() {
     setIsMobile(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent));
   }, []);
 
-  const openApp = () => {
-    // ChannelScreen/:channelId/:username?
-    window.location.href = `cubeapp://ChannelScreen/${channel?.businessId}/${channel?.username}`;
-    setTimeout(() => {
-      window.location.href = `https://cubechat.org/channel/${channelId}`;
-    }, 1200);
-  };
+  // const openApp = () => {
+  //   // ChannelScreen/:channelId/:username?
+  //   window.location.href = `cubeapp://ChannelScreen/${channel?.businessId}/${channel?.username}`;
+  //   setTimeout(() => {
+  //     window.location.href = `https://cubechat.org/channel/${channelId}`;
+  //   }, 1200);
+  // };
 
   return (
     <div className="min-h-screen bg-[linear-gradient(135deg,#dff1e8,#e8f0ff,#ffffff)] px-4 flex justify-center items-start">
@@ -62,9 +63,9 @@ export default function Channel() {
             </h1>
             <p className="text-sm text-neutral-500">@{channel?.username}</p>
 
-            {channel?.subscribers && (
+            {channel?.followersCount && (
               <p className="text-xs text-neutral-400 mt-1">
-                {channel.subscribers.toLocaleString()} subscribers
+                {channel?.followersCount.toLocaleString()} subscribers
               </p>
             )}
           </div>

@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router";
+import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { RESOLVE_USERNAME } from "../services/resolve";
 
@@ -12,17 +12,18 @@ interface UserObject {
 }
 export default function Profile() {
   const { username } = useParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(false);
   const [user, setUser] = useState<UserObject>();
 
+  console.log(isMobile, "isMobile");
   // Mocked profile data (replace later with API)
-  const profile = {
-    name: "Cube User",
-    username,
-    bio: "Building cool things with Cube 🚀",
-    avatar: "https://api.dicebear.com/7.x/identicon/svg?seed=" + username,
-  };
+  // const profile = {
+  //   name: "Cube User",
+  //   username,
+  //   bio: "Building cool things with Cube 🚀",
+  //   avatar: "https://api.dicebear.com/7.x/identicon/svg?seed=" + username,
+  // };
 
   const process = async () => {
     const res = await RESOLVE_USERNAME({
@@ -44,16 +45,16 @@ export default function Profile() {
     setIsMobile(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent));
   }, []);
 
-  const openApp = () => {
-    const deepLink = `cubeapp://ProfileScreen/${user?.id}`;
-    const fallback = `https://cubechat.org/user/${username}`;
+  // const openApp = () => {
+  //   const deepLink = `cubeapp://ProfileScreen/${user?.id}`;
+  //   const fallback = `https://cubechat.org/user/${username}`;
 
-    window.location.href = deepLink;
+  //   window.location.href = deepLink;
 
-    setTimeout(() => {
-      window.location.href = fallback;
-    }, 1200);
-  };
+  //   setTimeout(() => {
+  //     window.location.href = fallback;
+  //   }, 1200);
+  // };
 
   const normalizedName = () => {
     if (user?.firstName === null || user?.lastName === null)
