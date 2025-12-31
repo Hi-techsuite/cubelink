@@ -36,13 +36,13 @@ export default function Channel() {
     setIsMobile(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent));
   }, []);
 
-  // const openApp = () => {
-  //   // ChannelScreen/:channelId/:username?
-  //   window.location.href = `cubeapp://ChannelScreen/${channel?.businessId}/${channel?.username}`;
-  //   setTimeout(() => {
-  //     window.location.href = `https://cubechat.org/channel/${channelId}`;
-  //   }, 1200);
-  // };
+  const openApp = () => {
+    // ChannelScreen/:channelId/:username?
+    window.location.href = `cubeapp://ChannelScreen/${channel?.businessId}/${channel?.username}`;
+    setTimeout(() => {
+      window.location.href = `https://cubechat.org/channel/${channelId}`;
+    }, 1200);
+  };
 
   return (
     <div className="min-h-screen bg-[linear-gradient(135deg,#dff1e8,#e8f0ff,#ffffff)] px-4 flex justify-center items-start">
@@ -76,7 +76,7 @@ export default function Channel() {
           </p>
 
           {/* Actions */}
-          {/* <div className="w-full flex flex-col gap-3 mt-4">
+          <div className="w-full flex flex-col gap-3 mt-4">
             {isMobile && (
               <button
                 onClick={openApp}
@@ -92,7 +92,7 @@ export default function Channel() {
             >
               Open Web
             </a>
-          </div> */}
+          </div>
 
           {/* Footer */}
           <p className="text-xs text-neutral-500 mt-2">

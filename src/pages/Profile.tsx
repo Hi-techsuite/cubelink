@@ -47,16 +47,16 @@ export default function Profile() {
     setIsMobile(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent));
   }, []);
 
-  // const openApp = () => {
-  //   const deepLink = `cubeapp://ProfileScreen/${user?.id}`;
-  //   const fallback = `https://cubechat.org/user/${username}`;
+  const openApp = () => {
+    const deepLink = `cubeapp://ProfileScreen/${user?.id}`;
+    const fallback = `https://cubechat.org/user/${username}`;
 
-  //   window.location.href = deepLink;
+    window.location.href = deepLink;
 
-  //   setTimeout(() => {
-  //     window.location.href = fallback;
-  //   }, 1200);
-  // };
+    setTimeout(() => {
+      window.location.href = fallback;
+    }, 1200);
+  };
 
   const normalizedName = () => {
     if (user?.firstName === null || user?.lastName === null)
@@ -90,7 +90,7 @@ export default function Profile() {
           {/* <p className="text-sm text-neutral-700 text-center">{profile.bio}</p> */}
 
           {/* Actions */}
-          {/* <div className="w-full flex flex-col gap-3 mt-4">
+          <div className="w-full flex flex-col gap-3 mt-4">
             {isMobile && (
               <button
                 onClick={openApp}
@@ -106,7 +106,7 @@ export default function Profile() {
             >
               Open Web
             </a>
-          </div> */}
+          </div>
 
           {/* Footer */}
           <p className="text-xs text-neutral-500 mt-2">
