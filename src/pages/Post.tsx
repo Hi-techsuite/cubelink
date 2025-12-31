@@ -23,63 +23,66 @@ export default function Post() {
   }, []);
 
   const openApp = () => {
-    const deepLink = `cubeapp://post/${postId}`;
-    const fallback = `https://cubechat.org/post/${postId}`;
-
-    window.location.href = deepLink;
-
+    window.location.href = `cubeapp://post/${postId}`;
     setTimeout(() => {
-      window.location.href = fallback;
+      window.location.href = `https://cubechat.org/post/${postId}`;
     }, 1200);
   };
 
   return (
-    <div className="min-h-screen bg-neutral-950 flex items-center justify-center px-4">
-      <div className="w-full max-w-sm bg-neutral-900 rounded-2xl shadow-xl p-6 flex flex-col gap-4">
-        {/* Author */}
-        <div className="flex items-center gap-3">
-          <img
-            src={post.author.avatar}
-            alt="avatar"
-            className="w-10 h-10 rounded-full bg-neutral-800"
-          />
-          <div>
-            <p className="font-medium leading-none">{post.author.name}</p>
-            <p className="text-sm text-neutral-400">@{post.author.username}</p>
+    <div className="min-h-screen bg-[linear-gradient(135deg,#dff1e8,#e8f0ff,#ffffff)] px-4 flex justify-center items-start">
+      {/* Optical centering wrapper */}
+      <div className="w-full max-w-sm mt-[12vh] md:mt-[14vh]">
+        <div className="bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.08)] p-6 flex flex-col gap-4">
+          {/* Author */}
+          <div className="flex items-center gap-3">
+            <img
+              src={post.author.avatar}
+              alt="avatar"
+              className="w-10 h-10 rounded-full bg-neutral-100"
+            />
+            <div>
+              <p className="text-sm font-semibold text-neutral-900 leading-none">
+                {post.author.name}
+              </p>
+              <p className="text-xs text-neutral-500">
+                @{post.author.username}
+              </p>
+            </div>
           </div>
-        </div>
 
-        {/* Content */}
-        <p className="text-neutral-200 text-sm leading-relaxed">
-          {post.content}
-        </p>
+          {/* Content */}
+          <p className="text-sm text-neutral-700 leading-relaxed">
+            {post.content}
+          </p>
 
-        {/* Timestamp */}
-        <p className="text-xs text-neutral-500">{post.timestamp}</p>
+          {/* Timestamp */}
+          <p className="text-xs text-neutral-400">{post.timestamp}</p>
 
-        {/* Actions */}
-        <div className="flex flex-col gap-3 mt-2">
-          {isMobile && (
-            <button
-              onClick={openApp}
-              className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 transition font-medium"
+          {/* Actions */}
+          <div className="flex flex-col gap-3 mt-4">
+            {isMobile && (
+              <button
+                onClick={openApp}
+                className="w-full py-3 rounded-xl bg-[#2AABEE] hover:bg-[#229ED9] transition text-white font-semibold"
+              >
+                Open in App
+              </button>
+            )}
+
+            <a
+              href={`https://cubechat.org/post/${postId}`}
+              className="w-full py-3 rounded-xl bg-neutral-100 hover:bg-neutral-200 transition text-center font-semibold text-neutral-900"
             >
-              Open in App
-            </button>
-          )}
+              Open Web
+            </a>
+          </div>
 
-          <a
-            href={`https://cubechat.org/post/${postId}`}
-            className="w-full py-3 rounded-xl bg-neutral-800 hover:bg-neutral-700 transition text-center font-medium"
-          >
-            Open Web
-          </a>
+          {/* Footer */}
+          <p className="text-xs text-neutral-500 text-center mt-2">
+            View this post on Cube
+          </p>
         </div>
-
-        {/* Footer */}
-        <p className="text-xs text-neutral-500 text-center mt-1">
-          View this post on Cube
-        </p>
       </div>
     </div>
   );

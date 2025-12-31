@@ -46,13 +46,13 @@ export default function Profile() {
 
   const openApp = () => {
     const deepLink = `cubeapp://ProfileScreen/${user?.id}`;
-    // const fallback = `https://cubechat.org/user/${username}`;
+    const fallback = `https://cubechat.org/user/${username}`;
 
     window.location.href = deepLink;
 
-    // setTimeout(() => {
-    //   window.location.href = fallback;
-    // }, 1200);
+    setTimeout(() => {
+      window.location.href = fallback;
+    }, 1200);
   };
 
   const normalizedName = () => {
@@ -65,18 +65,7 @@ export default function Profile() {
   };
   return (
     <div className="min-h-screen bg-linear-to-b from-[#e7f0fd] via-[#f6f8fc] to-[#ffffff]">
-      {/* Telegram-like Header */}
-      <header className="sticky top-0 z-20 bg-white/80 backdrop-blur border-b border-neutral-200">
-        <div className="max-w-md mx-auto px-4 h-14 flex items-center gap-3">
-          <button
-            onClick={() => navigate(-1)}
-            className="text-indigo-600 text-lg font-medium"
-          >
-            ←
-          </button>
-          <h1 className="text-base font-semibold text-neutral-900">Profile</h1>
-        </div>
-      </header>
+
 
       {/* Content */}
       <div className="flex justify-center px-4 py-8">
@@ -93,11 +82,11 @@ export default function Profile() {
             <h1 className="text-xl font-semibold text-neutral-900">
               {normalizedName()}
             </h1>
-            <p className="text-sm text-neutral-500">@{profile.username}</p>
+            <p className="text-sm text-neutral-500">@{user?.username}</p>
           </div>
 
           {/* Bio */}
-          <p className="text-sm text-neutral-700 text-center">{profile.bio}</p>
+          {/* <p className="text-sm text-neutral-700 text-center">{profile.bio}</p> */}
 
           {/* Actions */}
           <div className="w-full flex flex-col gap-3 mt-4">
