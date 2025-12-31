@@ -25,6 +25,8 @@ export default function Profile() {
   //   avatar: "https://api.dicebear.com/7.x/identicon/svg?seed=" + username,
   // };
 
+  // resolver
+
   const process = async () => {
     const res = await RESOLVE_USERNAME({
       username: username!,
