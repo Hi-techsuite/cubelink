@@ -36,7 +36,8 @@ export default function Channel() {
   }, []);
 
   const openApp = () => {
-    window.location.href = `cubeapp://ChannelScreen/${channelId}`;
+    // ChannelScreen/:channelId/:username?
+    window.location.href = `cubeapp://ChannelScreen/${channel?.businessId}/${channel?.username}`;
     setTimeout(() => {
       window.location.href = `https://cubechat.org/channel/${channelId}`;
     }, 1200);

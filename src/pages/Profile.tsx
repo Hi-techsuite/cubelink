@@ -65,8 +65,6 @@ export default function Profile() {
   };
   return (
     <div className="min-h-screen bg-linear-to-b from-[#e7f0fd] via-[#f6f8fc] to-[#ffffff]">
-
-
       {/* Content */}
       <div className="flex justify-center px-4 py-8">
         <div className="w-full max-w-sm bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center gap-4">
@@ -109,7 +107,7 @@ export default function Profile() {
 
           {/* Footer */}
           <p className="text-xs text-neutral-500 mt-2">
-            View this profile on Cube
+            View this profile on CubeÏ
           </p>
         </div>
       </div>
