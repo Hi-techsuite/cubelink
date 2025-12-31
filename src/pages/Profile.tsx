@@ -100,12 +100,12 @@ export default function Profile() {
               </button>
             )}
 
-            <a
+            {/* <a
               href={`https://cubechat.org/user/${username}`}
               className="w-full py-3 rounded-xl bg-neutral-100 hover:bg-neutral-200 transition text-center font-medium text-neutral-900"
             >
               Open Web
-            </a>
+            </a> */}
           </div>
 
           {/* Footer */}

@@ -86,12 +86,12 @@ export default function Channel() {
               </button>
             )}
 
-            <a
+            {/* <a
               href={`https://cubechat.org/channel/${channelId}`}
               className="w-full py-3 rounded-xl bg-neutral-100 hover:bg-neutral-200 transition text-center font-semibold text-neutral-900"
             >
               Open Web
-            </a>
+            </a> */}
           </div>
 
           {/* Footer */}
