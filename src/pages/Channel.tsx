@@ -20,7 +20,7 @@ export default function Channel() {
   const [isMobile, setIsMobile] = useState(false);
   const [channel, setChannel] = useState<ChannelProps>();
 
-  console.log(isMobile, 'isMobile');
+  console.log(isMobile, "isMobile");
   useEffect(() => {
     if (!channelId) return;
 
@@ -38,6 +38,8 @@ export default function Channel() {
 
   const openApp = () => {
     // ChannelScreen/:channelId/:username?
+
+    console.log(channel?.businessId, channel?.username, "hop in");
     window.location.href = `cubeapp://ChannelScreen/${channel?.businessId}/${channel?.username}`;
     setTimeout(() => {
       window.location.href = `https://cubechat.org/channel/${channelId}`;
@@ -61,6 +63,7 @@ export default function Channel() {
             <h1 className="text-xl font-semibold text-neutral-900">
               {channel?.businessName}
             </h1>
+
             <p className="text-sm text-neutral-500">@{channel?.username}</p>
 
             {channel?.followersCount && (
