@@ -1,5 +1,5 @@
 // pages/Post.tsx
-import { useParams, useSearchParams } from "react-router";
+import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { POST_BY_ID } from "../services/resolve";
 export interface FeedPost {
@@ -73,15 +73,13 @@ export interface FeedPost {
 
 export default function Post() {
   const { postId } = useParams<{ postId: string }>();
-  const [searchParams] = useSearchParams();
   const [post, setPost] = useState<FeedPost>();
 
   const [isMobile, setIsMobile] = useState(false);
 
   // Extract and safely decode data from URL
-  const rawText = searchParams.get("text");
-  const rawImages = searchParams.get("images");
-  console.log(postId, "postID", rawText);
+  // const rawText = searchParams.get("text");
+  // const rawImages = searchParams.get("images");
 
   const process = async () => {
     const res = await POST_BY_ID({
@@ -97,24 +95,7 @@ export default function Post() {
   useEffect(() => {
     process();
   }, [postId]);
-  const text = rawText
-    ? decodeURIComponent(rawText)
-    : "This post was shared from Cube.";
-
-  // Parse images array safely
-  let images: string[] = [];
-  if (rawImages) {
-    try {
-      const parsed = JSON.parse(decodeURIComponent(rawImages));
-      if (Array.isArray(parsed)) {
-        images = parsed.filter(
-          (url: any) => typeof url === "string" && url.startsWith("http")
-        );
-      }
-    } catch (error) {
-      console.warn("Failed to parse images from URL:", error);
-    }
-  }
+  
 
   useEffect(() => {
     // Detect if user is on mobile (iOS or Android)
