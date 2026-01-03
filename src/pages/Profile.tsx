@@ -49,13 +49,13 @@ export default function Profile() {
 
   const openApp = () => {
     const deepLink = `cubeapp://ProfileScreen/${user?.id}`;
-    const fallback = `https://cubechat.org/user/${username}`;
+    // const fallback = `https://cubechat.org/user/${username}`;
 
     window.location.href = deepLink;
 
-    setTimeout(() => {
-      window.location.href = fallback;
-    }, 1200);
+    // setTimeout(() => {
+    //   window.location.href = fallback;
+    // }, 1200);
   };
 
   const normalizedName = () => {

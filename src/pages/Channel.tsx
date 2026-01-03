@@ -41,9 +41,9 @@ export default function Channel() {
 
     console.log(channel?.businessId, channel?.username, "hop in");
     window.location.href = `cubeapp://ChannelScreen/${channel?.businessId}/${channel?.username}`;
-    setTimeout(() => {
-      window.location.href = `https://cubechat.org/channel/${channelId}`;
-    }, 1200);
+    // setTimeout(() => {
+    //   window.location.href = `https://cubechat.org/channel/${channelId}`;
+    // }, 1200);
   };
 
   return (
