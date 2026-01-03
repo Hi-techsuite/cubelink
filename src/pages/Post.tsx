@@ -1,20 +1,102 @@
 // pages/Post.tsx
 import { useParams, useSearchParams } from "react-router";
 import { useEffect, useState } from "react";
+import { POST_BY_ID } from "../services/resolve";
+export interface FeedPost {
+  _id: string;
+  id: string;
+
+  isRepost: boolean | null;
+  repostChain: string | null;
+  originalPostID: string | null;
+
+  userID: string;
+  productID: string | null;
+  businessID: string | null;
+
+  isOwner: boolean;
+
+  text: string;
+  category: string;
+
+  imageURL: string | null;
+  videoURL: string | null;
+
+  resource: {
+    thumbnail: string;
+    hls: string;
+  } | null;
+
+  likeCount: number;
+  viewCount: number;
+  repostCount: number;
+
+  isDeleted: boolean;
+  isLive: boolean;
+
+  liveMeta: {
+    roomName: string;
+    liveTitle: string;
+    liveDesc: string;
+    liveToken: string;
+    likeCount: number;
+    viewCount: number;
+    activeViewers: string[];
+    liveType: "NORMAL" | string;
+    videoPaused: boolean;
+    micMuted: boolean;
+    giftingPaused: boolean;
+    commentMuted: boolean;
+  } | null;
+
+  createdAt: string; // ISO date
+  updatedAt: string; // ISO date
+
+  __v: number;
+
+  comments: any[]; // you can strongly type this later
+  commentCount: number;
+
+  isLiked: boolean;
+
+  displayImg: string;
+  username: string;
+
+  isFollowing: boolean | null;
+  hasChannel: boolean;
+
+  channelInfo: {
+    businessName: string;
+    image: string;
+  } | null;
+}
 
 export default function Post() {
   const { postId } = useParams<{ postId: string }>();
   const [searchParams] = useSearchParams();
+  const [post, setPost] = useState<FeedPost>();
 
-
-  
   const [isMobile, setIsMobile] = useState(false);
-  
+
   // Extract and safely decode data from URL
   const rawText = searchParams.get("text");
   const rawImages = searchParams.get("images");
-  console.log(postId, 'postID', rawText )
-  
+  console.log(postId, "postID", rawText);
+
+  const process = async () => {
+    const res = await POST_BY_ID({
+      id: postId!,
+    });
+
+    if (!res?.success) return;
+
+    setPost(res?.data);
+    console.log(res, "obstruction");
+  };
+
+  useEffect(() => {
+    process();
+  }, [postId]);
   const text = rawText
     ? decodeURIComponent(rawText)
     : "This post was shared from Cube.";
@@ -73,27 +155,16 @@ export default function Post() {
 
           {/* Post Text */}
           <p className="text-sm text-neutral-800 leading-relaxed whitespace-pre-wrap">
-            {text}
+            {post?.text}
           </p>
-
-          {/* Images Grid */}
-          {images.length > 0 && (
-            <div
-              className={`grid gap-2 ${
-                images.length === 1 ? "grid-cols-1" : "grid-cols-2"
-              }`}
-            >
-              {images.map((src, index) => (
-                <img
-                  key={index}
-                  src={src}
-                  alt={`Shared image ${index + 1}`}
-                  className="rounded-lg object-cover w-full h-auto max-h-96"
-                  loading="lazy"
-                />
-              ))}
-            </div>
-          )}
+          <img
+            // key={index}
+            src={post?.resource?.thumbnail}
+            alt={`Shared image `}
+            className="rounded-lg object-cover w-full h-auto max-h-96"
+            loading="lazy"
+          />
+        
 
           {/* Timestamp */}
           {/* <p className="text-xs text-neutral-400">Just now</p> */}
