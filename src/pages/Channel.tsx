@@ -65,7 +65,6 @@ export default function Channel() {
             </h1>
 
             <p className="text-sm text-neutral-500">@{channel?.username}</p>
-
             {channel?.followersCount && (
               <p className="text-xs text-neutral-400 mt-1">
                 {channel?.followersCount.toLocaleString()} subscribers
