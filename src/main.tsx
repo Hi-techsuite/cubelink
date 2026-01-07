@@ -13,6 +13,7 @@ import Home from "./pages/Home.tsx";
 import Channel from "./pages/Channel.tsx";
 import Profile from "./pages/Profile.tsx";
 import Post from "./pages/Post.tsx";
+import Group from "./pages/Group.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
       <Route path="c/:channelId" element={<Channel />} />
       <Route path="u/:username" element={<Profile />} />
       <Route path="p/:postId" element={<Post />} />
+      <Route path="g/:groupId" element={<Group />} />
     </Route>
   )
 );
