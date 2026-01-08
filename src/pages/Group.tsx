@@ -174,7 +174,7 @@ export default function Group() {
                   Open this link on your phone to join the group in the Cube app
                 </p>
                 <div className="bg-gray-100 rounded-lg p-4 font-mono text-sm break-all">
-                  cubeapp://GroupScreen/{group.groupId}/{group.username}
+                  Open on Web
                 </div>
               </div>
             )}
