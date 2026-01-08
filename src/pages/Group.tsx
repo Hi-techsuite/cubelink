@@ -79,6 +79,7 @@ export default function Group() {
   const openApp = () => {
     if (!group) return;
 
+    // const deepLink = `cubeapp://ChatScreen/${group?._id}/group`;
     const deepLink = `cubeapp://ChatScreen/${group?._id}/group`;
     window.location.href = deepLink;
 
@@ -91,7 +92,7 @@ export default function Group() {
 
         if (isAndroid) {
           window.location.href =
-            "https://play.google.com/store/apps/details?id=your.app.package";
+            "https://play.google.com/store/apps/details?id=ng.cube.app";
         } else if (isIOS) {
           window.location.href = "https://apps.apple.com/app/idYOUR_APP_ID";
         }
