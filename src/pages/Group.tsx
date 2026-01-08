@@ -3,6 +3,12 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { RESOLVE_GROUP } from "../services/resolve";
 
+interface memberProps {
+  user: number;
+  role: string;
+  joinedAt: string;
+  _id: string;
+}
 interface GroupProps {
   groupId: string;
   groupName: string;
@@ -14,6 +20,13 @@ interface GroupProps {
   createdBy: string;
   createdAt: string;
   membersCount?: number;
+  members: [memberProps];
+  _id?: string;
+  avatar?: {
+    url: string;
+  };
+  name?: string;
+  description?: string;
 }
 
 export default function Group() {
@@ -66,7 +79,7 @@ export default function Group() {
   const openApp = () => {
     if (!group) return;
 
-    const deepLink = `cubeapp://ChatScreen/${group._id}/group`;
+    const deepLink = `cubeapp://ChatScreen/${group?._id}/group`;
     window.location.href = deepLink;
 
     // Optional fallback for browsers that don't handle custom schemes well
@@ -126,21 +139,21 @@ export default function Group() {
       <div className="w-full max-w-sm mt-[12vh] md:mt-[16vh]">
         <div className="bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] p-8 flex flex-col items-center gap-6">
           {/* Avatar */}
-          {/* <img
-            src={group.image || "/fallback-avatar.png"}
+          <img
+            src={group?.avatar?.url || "/fallback-avatar.png"}
             alt={`${group.groupName} avatar`}
             className="w-28 h-28 rounded-full object-cover border-4 border-white shadow-md"
             onError={(e) => {
               (e.target as HTMLImageElement).src = "/fallback-avatar.png";
             }}
-          /> */}
+          />
 
           {/* Group Info */}
           <div className="text-center">
             <h1 className="text-2xl font-bold text-neutral-900">
               {group.name}
             </h1>
-            <p className="text-sm text-neutral-500 mt-1">@{group?.name}</p>
+            {/* <p className="text-sm text-neutral-500 mt-1">@{group?.name}</p> */}
             {group.members && (
               <p className="text-xs text-neutral-400 mt-2">
                 {group.members.length.toLocaleString()} member(s)
